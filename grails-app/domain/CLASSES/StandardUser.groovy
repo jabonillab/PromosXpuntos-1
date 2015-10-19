@@ -4,7 +4,7 @@ class StandardUser extends User{
     String gender
     Date birthday
     String telephone
-    static hasMany = [redeemblepoints : RedeemablePoints]
+    def points = [:]
 
     static constraints = {
         gender(inList: ['male', 'female'])
