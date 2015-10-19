@@ -4,5 +4,6 @@ class ShopRecord {
     Date date
     String id
     static constraints = {
+
     }
 }

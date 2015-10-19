@@ -5,5 +5,7 @@ class Product {
     String description
     int idProduct
     static constraints = {
+        name(blank: false)
+        description(maxSize: 200, nullable: true)
     }
 }
