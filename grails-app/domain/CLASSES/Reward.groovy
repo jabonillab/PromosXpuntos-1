@@ -1,9 +1,19 @@
 package CLASSES
 
-class Reward {
-    String type
-    int point
+class Reward extends Offer {
+    int pointsRequired
+
+    static hasMany = [
+            requesterUsers : StandardUser
+    ]
+
+    static belongsTo = StandardUser
+
     static constraints = {
-        type(blank: false)
+        pointsRequired(min: 0)
+    }
+
+    static mapping = {
+        table('reward')
     }
 }

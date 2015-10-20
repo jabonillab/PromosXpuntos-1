@@ -7,6 +7,7 @@ class User {
     String nickname
     String password
     Object picture
+
     static constraints = {
         name(blank: false)
         lastName(blank: false)

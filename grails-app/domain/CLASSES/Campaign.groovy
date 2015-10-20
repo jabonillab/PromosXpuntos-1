@@ -1,8 +1,17 @@
 package CLASSES
 
 class Campaign extends Offer {
-    String something
-    static constraints = {
+    String description
 
+    static belongsTo = [
+            customer : Customer
+    ]
+
+    static constraints = {
+        description(blank: false)
+    }
+
+    static mapping = {
+        table('campaign')
     }
 }

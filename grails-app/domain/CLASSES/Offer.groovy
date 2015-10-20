@@ -3,7 +3,9 @@ package CLASSES
 class Offer {
     Date creationDate
     Date dueDate
-    static constraints = {
+    Product product
 
+    static constraints = {
+        dueDate(validator: {return it > creationDate})
     }
 }
