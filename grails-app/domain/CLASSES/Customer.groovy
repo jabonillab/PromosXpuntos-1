@@ -18,7 +18,7 @@ class Customer {
         identification(blank: false)
         name(size: 5..50)
         contractNumber(size: 7..20)
-        description(maxSize: 200, nullable: true)
+        description(maxSize: 500, nullable: true)
         logo(nullable: true)
     }
 }
