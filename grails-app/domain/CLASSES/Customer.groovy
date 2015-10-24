@@ -6,7 +6,6 @@ class Customer {
     String contractNumber
     Object logo
     String description
-    String something
 
     static hasMany = [
             users : CustomerUser,
