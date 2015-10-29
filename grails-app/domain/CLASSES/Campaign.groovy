@@ -2,6 +2,7 @@ package CLASSES
 
 class Campaign extends Offer {
     String description
+    String something
 
     static belongsTo = [
             customer : Customer
