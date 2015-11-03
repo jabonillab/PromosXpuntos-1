@@ -7,11 +7,15 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class StandardUserController {
 
+    def user
+    def user1
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond StandardUser.list(params), model: [standardUserInstanceCount: StandardUser.count()]
+        if (session.StandardUserSession) {
+            redirect(controller: 'index', action: 'profile', params: [nickname: "${session.StandardUserSession}"])
+        }
     }
 
     def show(StandardUser standardUserInstance) {
@@ -22,6 +26,37 @@ class StandardUserController {
         respond new StandardUser(params)
     }
 
+    def registrar(){
+        user = StandardUser.findByEmail(params.email)
+        user1 = StandardUser.findByNickname(params.nickname)
+
+        if(user){
+            //El usuario ya existe
+            flash.message = "userExist'"
+            redirect(controller:'user',action:'logUp')
+        }
+        else if(user1){
+            //El usuario ya existe
+            flash.message = "mailExist"
+            redirect(controller:'user',action:'logUp')
+        }
+        else {
+            //Nuevo Usario*/
+            def parameters =  [   name      :   params.name
+                                  , lastName  :   params.lastName
+                                  , email     :   params.email
+                                  , nickname  :   params.nickname
+                                  , password  :   params.password
+                                  , gender    :   params.gender
+                                  , telephone :   params.telephone]
+
+            def newStandardUser = new StandardUser(parameters)
+            flash.message = "Usuario creado"
+        }
+        redirect(controller: 'standardUser', action: 'show')
+        return
+    }
+
     @Transactional
     def save(StandardUser standardUserInstance) {
         if (standardUserInstance == null) {
@@ -30,7 +65,7 @@ class StandardUserController {
         }
 
         if (standardUserInstance.hasErrors()) {
-            respond standardUserInstance.errors, view: 'create'
+            respond standardUserInstance.errors, view: 'create-error'
             return
         }
 
