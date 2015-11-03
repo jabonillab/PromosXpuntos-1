@@ -1,0 +1,197 @@
+
+.item-title{
+
+     background: rgba(52, 52, 52, 0.81);
+     margin-left: -15px;
+     padding-left: 15px;
+     margin-right: -15px;
+     padding-right: 15px;
+     margin-top: -10px;
+     padding-top: 8px;
+     padding-bottom: 3px;
+
+
+
+ }
+.item-body{
+    background-color: rgba(86, 86, 86, 0);
+    margin-left: -15px;
+    padding-left: 15px;
+    margin-right: -10px;
+    padding-right: 15px;
+    margin-bottom: -10px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+
+
+
+}
+
+
+
+
+A:hover , A:focus {color: #f6f6f6;
+text-decoration: none;
+}
+A {
+    color: #ffffff;
+}
+
+.deleteIco A:hover , .deleteIco A:focus {
+    color: #ffffff;
+    text-decoration: none;
+}
+.deleteIco A {
+    color: #000000;
+}
+
+
+.btn.focus, .btn:focus, .btn:hover {
+    color: #8c8c8c;
+}
+
+.header {
+    background-color: rgba(0, 0, 0, 0.79);
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: -20px;
+    margin-bottom: 10px;
+
+    padding: 20px;
+    color: #777;
+}
+.list-group-item:hover{
+
+    background-color: rgba(155, 155, 155, 0.70);
+    color: #000000;
+
+}
+.list-group-item{
+
+    background-color: rgb(86, 86, 86);
+    margin-top: 8px;
+    border: 2px solid #ffffff;
+    border-radius: 3px;
+    color: #ffffff;
+
+}
+body {
+    background:url(../images/backgroundGroup.jpg);
+    word-wrap: break-word;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+
+}
+.tagForo{
+
+
+    border-radius: 3px;
+}
+
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #F5F5F5;
+    background-color: rgba(126, 126, 126, 0.48);
+
+
+}
+.bs-callout-default h4 {
+    color: #EA8201;
+    font-weight: 700;
+
+}
+.bs-callout-default h3 {
+    color: #cecece;
+    font-weight: 700;
+}
+.bs-callout-default h2 {
+    color: #ffffff;
+    font-weight: 700;
+
+}
+.bs-callout-default h5 {
+    color: #cecece;
+    font-weight: 700;
+}
+
+
+.btn-success {
+    background-color: #EA8201;
+    border-color: #EA8201;
+    margin-top: 8px;
+
+
+
+
+}
+.btn-success.active,.btn-success.focus,.btn-success:active,.btn-success:focus,.btn-success:hover,.open>.dropdown-toggle.btn-success{
+    color:#fff;
+    background-color:#EC832F;
+    border-color:#EC832F;
+
+}
+
+
+
+.pagination {
+    border-top: 0;
+
+    padding: 0.3em 0.2em;
+    text-align: center;
+
+
+
+    border-radius: 0.0em;
+}
+
+.pagination a,
+.pagination .currentStep {
+    color: #2c2c2c;
+    display: inline-block;
+    margin: 0 0.1em;
+    padding: 0.25em 0.7em;
+    text-decoration: none;
+    -moz-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+
+.pagination a:hover, .pagination a:focus,
+.pagination .currentStep {
+    background-color: rgba(56, 56, 56, 0.76);
+    color: #ffffff;
+    outline: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.no-borderradius .pagination a:hover, .no-borderradius .pagination a:focus,
+.no-borderradius .pagination .currentStep {
+    background-color: transparent;
+    color: #444444;
+    text-decoration: underline;
+}
+.sectionTitle {
+    padding: 5px 5px 5px 5px;
+    border-bottom: 1px solid #888;
+}

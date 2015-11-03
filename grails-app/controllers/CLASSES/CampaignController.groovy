@@ -9,9 +9,10 @@ class CampaignController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Campaign.list(params), model: [campaignInstanceCount: Campaign.count()]
+    def index(){
+        if(session.campaignSession){
+            redirect(controller: 'campaign',action: 'profile' , params: [campaignName: "${session.campaignSession}"])
+        }
     }
 
     def show(Campaign campaignInstance) {
@@ -100,4 +101,59 @@ class CampaignController {
             '*' { render status: NOT_FOUND }
         }
     }
+    private static final okcontents = ['image/png', 'image/jpeg', 'image/gif']
+    def register() {
+
+        def campaign = Campaign.findByCampaignName(params.campaignName)
+
+        if (campaign) {
+            //El usuario ya existe
+            flash.message = "campaignNameExist'"
+            redirect(controller: 'campaign', action: 'logUp')
+        }  else {
+            //Nuevo Usario*/
+            def pictureFile = request.getFile('picture')
+            if (!okcontents.contains(pictureFile.getContentType()) && pictureFile.bytes != []) {
+                flash.message = "picture"
+                render(view:'logUp', model:[campaign:campaign,formats:okcontents])
+                return
+            }
+            def parameters = [campaignName: params.campaignName
+                              , description    : params.description
+                              , creationDate    : params.creationDate
+                              , dueDate  : params.dueDate
+                              , point   : params.point
+                              , picture : pictureFile.bytes
+                              , pictureType : pictureFile.contentType]
+
+
+            def newCampaign = new Campaign(parameters)
+
+            if(!newCampaign.save(flush: true)){
+                render(view: 'logUp',model: [newCampaign:newCampaign])
+                return
+            }
+
+            campaign = User.findByPicture(params.picture)
+            session["campaignSession"]=campaign.campaignName
+            redirect(controller: 'campaign', action: 'save',params: [campaignName:"${campaign.campaignName}"])
+            return
+        }
+    }
+    def logUp(){
+    }
+
+//    def profile() {
+
+        //def campaignName = params.campaignName
+        //if (session.campaignSession == campaignName) {
+
+          //  render(view: 'profile', model: [campaign: Campaign.findByCampaignName(session.campaignSession)])
+        //} else {
+          //  render(view: 'profile', model: [campaign: Campaign.findByCampaignName(campaignName)])
+        //}
+
+//    }
+
+
 }

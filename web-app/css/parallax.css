@@ -1,0 +1,80 @@
+/**
+ * parallax.css
+ * @Author Original @msurguy -> http://bootsnipp.com/snippets/featured/parallax-login-form
+ * @Reworked By @kaptenn_com 
+ * @package PARALLAX LOGIN.
+ */
+
+    body {
+        background-color: #444;
+        background:url(../images/backgroundLog.jpg);
+
+    }
+.avatar-loader{
+    background-color: rgba(155, 155, 155, 0.70);
+    border: 0px;
+    padding-bottom: 0px;
+    padding-top: 7px;
+    color: #000000;
+
+}
+legend{
+    margin-bottom: 8px;
+    padding-bottom: 2px;
+    border-bottom: 3px solid;
+}
+    .form-signin input[type="text"] {
+        margin-bottom: 5px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .form-signin .form-control {
+        position: relative;
+        font-size: 16px;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        height: auto;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .vertical-offset-100 {
+        padding-top: 8%;
+    }
+    .img-responsive {
+        display: block;
+        max-width: 50%;
+        height: auto;
+        margin: auto;
+    }
+    .panel {
+    margin-bottom: 20px;
+    background-color: rgba(42, 42, 42, 0.8);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    }
+.form-control { margin-bottom: 10px; }
+.heading {
+    padding-top: 20px;
+    color: #fff;
+    margin: auto;
+
+
+}
+.btn-success {
+    background-color: #EA8201;
+    border-color: #EA8201;
+
+}
+.btn-success.active,.btn-success.focus,.btn-success:active,.btn-success:focus,.btn-success:hover,.open>.dropdown-toggle.btn-success{
+	color:#fff;
+	background-color:#F7A14B;
+	border-color:#F7A14B;
+}

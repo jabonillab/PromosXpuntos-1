@@ -1,0 +1,35 @@
+@media only screen and (max-width: 768px) {
+    #miniMenu{
+        display: block;
+    }
+    #sidebar-wrapper{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    #miniMenu{
+        display: none;
+    }
+}
+
+#menu_boton{
+	position: fixed;
+	background-color: #f2dfc4;
+}
+
+#menu_boton:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #c94d1f;
+}
+
+.svg {
+
+	width: 20%;
+	height: auto;
+}
+#paddingMenu{
+    padding: 0%;
+    margin: 0%;
+}
