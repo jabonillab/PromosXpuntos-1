@@ -23,11 +23,11 @@
 			</g:if>
 			<ol class="property-list campaign">
 			
-				<g:if test="${campaignInstance?.dueDate}">
+				<g:if test="${campaignInstance?.dueDateCampaign}">
 				<li class="fieldcontain">
-					<span id="dueDate-label" class="property-label"><g:message code="campaign.dueDate.label" default="Due Date" /></span>
+					<span id="dueDateCampaign-label" class="property-label"><g:message code="campaign.dueDateCampaign.label" default="Due Date" /></span>
 					
-						<span class="property-value" aria-labelledby="dueDate-label"><g:formatDate date="${campaignInstance?.dueDate}" /></span>
+						<span class="property-value" aria-labelledby="dueDateCampaign-label"><g:formatDate date="${campaignInstance?.dueDateCampaign}" /></span>
 					
 				</li>
 				</g:if>
@@ -38,35 +38,20 @@
 					
 						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${campaignInstance}" field="description"/></span>
 					
-				</li>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													</li>
 				</g:if>
 			
-				<g:if test="${campaignInstance?.creationDate}">
+				<g:if test="${campaignInstance?.creationDateCampaign}">
 				<li class="fieldcontain">
-					<span id="creationDate-label" class="property-label"><g:message code="campaign.creationDate.label" default="Creation Date" /></span>
+					<span id="creationDateCampaign-label" class="property-label"><g:message code="campaign.creationDateCampaign.label" default="Creation Date" /></span>
 					
-						<span class="property-value" aria-labelledby="creationDate-label"><g:formatDate date="${campaignInstance?.creationDate}" /></span>
+						<span class="property-value" aria-labelledby="creationDateCampaign-label"><g:formatDate date="${campaignInstance?.creationDateCampaign}" /></span>
 					
 				</li>
 				</g:if>
+
 			
-				<g:if test="${campaignInstance?.customer}">
-				<li class="fieldcontain">
-					<span id="customer-label" class="property-label"><g:message code="campaign.customer.label" default="Customer" /></span>
-					
-						<span class="property-value" aria-labelledby="customer-label"><g:link controller="customer" action="show" id="${campaignInstance?.customer?.id}">${campaignInstance?.customer?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${campaignInstance?.product}">
-				<li class="fieldcontain">
-					<span id="product-label" class="property-label"><g:message code="campaign.product.label" default="Product" /></span>
-					
-						<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" id="${campaignInstance?.product?.id}">${campaignInstance?.product?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
+
 			
 			</ol>
 			<g:form url="[resource:campaignInstance, action:'delete']" method="DELETE">

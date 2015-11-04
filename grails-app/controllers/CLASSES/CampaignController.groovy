@@ -9,9 +9,11 @@ class CampaignController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+
+
     def index(Integer max) {
-        if (session.StandardUserSession) {
-            redirect(controller: 'index', action: 'profile', params: [nickname: "${session.StandardUserSession}"])
+        if (session.CampaignSession) {
+            redirect(controller: 'campaign', action: 'profile', params: [campaignName: "${session.CampaignSession}"])
         }
     }
 
@@ -19,44 +21,10 @@ class CampaignController {
         respond campaignInstance
     }
 
-    def create() {
+    def     create() {
         respond new Campaign(params)
     }
 
-
-    private static final okcontents = ['image/png', 'image/jpeg', 'image/gif']
-    def registrar() {
-
-        def campaign = Campaign.findByCampaignName(params.campaignName)
-
-        if (campaign) {
-            //El usuario ya existe
-            flash.message = "campaignNameExist'"
-            redirect(controller: 'campaign', action: 'logUp')
-        }  else {
-            //Nuevo Usario*/
-            def pictureFile = request.getFile('picture')
-            if (!okcontents.contains(pictureFile.getContentType()) && pictureFile.bytes != []) {
-                flash.message = "picture"
-                render(view:'logUp', model:[campaign:campaign,formats:okcontents])
-                return
-            }
-            def parameters = [campaignName: params.campaignName
-                              , description    : params.description
-                              , creationDate    : params.creationDate
-                              , dueDate  : params.dueDate
-                              , point   : params.point
-                              , picture : pictureFile.bytes
-                              , pictureType : pictureFile.contentType]
-
-
-            def newCampaign = new Campaign(parameters)
-            flash.message = "Usuario creado"
-
-        }
-        redirect(controller: 'campaign', action: 'show')
-        return
-    }
 
     @Transactional
     def save(Campaign campaignInstance) {
@@ -69,7 +37,6 @@ class CampaignController {
             respond campaignInstance.errors, view: 'create'
             return
         }
-
         campaignInstance.save flush: true
 
         request.withFormat {

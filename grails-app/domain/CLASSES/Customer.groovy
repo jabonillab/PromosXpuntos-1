@@ -12,6 +12,7 @@ class Customer {
             rewards : Reward,
             campaigns : Campaign,
             establishment : Establishment
+
     ]
 
     static constraints = {

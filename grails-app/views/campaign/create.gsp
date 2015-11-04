@@ -12,31 +12,18 @@
 	<title>PROMOXPUNTOS register-campaign</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css',file: 'bootstrap.min.css')}">
-	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css',file: 'parallax.css')}">
-	<script src="${resource(dir: 'js',file: 'jquery-1.10.2.min.js')}"></script>
-	<script src="${resource(dir: 'js',file: 'parallax.js')}"></script>
 	<script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/qweqq/assets/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/qweqq/assets/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/qweqq/assets/apple-touch-icon-retina.png">
-
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'css',file: 'bootstrap.min.css')}">
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'css',file: 'signin.css')}">
-    <script src="/qweqq/assets/jquery/jquery-1.11.1.js?compile=false" type="text/javascript" >
-    </script><script src="/qweqq/assets/jquery.js?compile=false" type="text/javascript" ></script>
-    <script src="/qweqq/assets/application.js?compile=false" type="text/javascript" ></script>
 
 	<title>jQuery UI Datepicker - Default functionality</title>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/south-street/jquery-ui.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
 	<script>
 		$(function() {
-			$( "#dueDate" ).datepicker({minDate: 2});
-			$( "#creationDate" ).datepicker({minDate: 0});
+            $( "#dueDateCampaign" ).datepicker({dateFormat: 'yy-mm-dd 00:00:00 COT'});
+			$( "#dueDateCampaign" ).datepicker({minDate: 2});
 		});
 	</script>
 
@@ -56,88 +43,115 @@
                     <div  class="heading">
                         <div  class="heading">
                             <center>
-                                <img src="${resource(dir: 'images',file: 'asdasd.jpeg')}" class="img-responsive" alt="Conxole Admin" align="top" />
+                                <img src="${resource(dir: 'images',file: 'logotipo.png')}" class="img-responsive" alt="Conxole Admin" align="top" />
                             </center>
                         </div>
                         <br>
                     </div>
                     <div class="panel-body">
-                        <form class="form-signin" action="/qweqq/campaign/save" method="post" >
-                            <fieldset class="form">
+                        <g:uploadForm controller="campaign" action="register" accept-charset="UTF-8" role="form" class="form-signup">
 
-                                <div class="fieldcontain  required">
-                                    <label for="campaignName" class="sr-only">
-                                        Nombre de la recompensa
-                                        <span class="required-indicator">*</span>
-                                    </label>
-                                    <input type="text" name="campaignName" class="form-control" placeholder="Nombre de la recompensa" required="" value="" id="campaignName" />
-                                </div>
-
-                                <div class="fieldcontain  required">
-                                    <label for="description" class="sr-only">
-                                        Descripcion
-                                        <span class="required-indicator">*</span>
-                                    </label>
-                                    <input type="text" name="description" class="form-control" placeholder="Descripcion" required="" value="" id="description" />
-                                </div>
-
-                                <br>
-                                <g:if test="${flash.message == "picture"}">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2  list-group-item img-rounded">
-                                            <legend>Imagen de la PROMO</legend>
-                                            <label for="picture">PROMO</label>
-                                            <input type="file" name="picture"/>
-                                            <div style="font-size:0.8em; margin: 1.0em;">
-                                                <p>Tu imagen de la promocio es opcional, pero como sus clientes se enteraran de tus promociones sin una buena imagen!.</p>
-                                            </div>
-                                        </div>
+                            <div class="row">
+                                <g:if test="${!hasErrors(field: 'campaignName','error')}">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2">
+                                        <g:textField id="campaignName" class="form-control" name="campaignName"  placeholder="Nombre"></g:textField>
                                     </div>
                                 </g:if>
                                 <g:else>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2  list-group-item img-rounded avatar-loader">
-                                            <legend>Imagen de la PROMO</legend>
-                                            <label for="picture">PROMO</label>
-                                            <input type="file" name="picture" id="picture" />
-                                            <div style="font-size:0.8em; margin: 1.0em;">
-                                                <p>Tu imagen de la promocion es opcional, pero como tus clientes se enteraran de tus promociones sin una buena imagen!</p>
-                                            </div>
-                                        </div>
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2 has-error">
+                                        <g:textField id="campaignName" class="form-control "  name="campaignName"  placeholder="Nombre"></g:textField>
+                                        <label class="control-label list-group-item-danger img-rounded">Nombre entre 3-20 caracteres</label>
                                     </div>
                                 </g:else>
-                                <br>
+                            </div>
 
-
-                                <div class="fieldcontain  required">
-                                    <label for="creationDate" class="sr-only">
-                                        Fecha de creacion
-                                        <span class="required-indicator">*</span>
-                                    </label>
-                                    <input type="text" name="creationDate" class="form-control" placeholder="Fecha de creacion" required="" value="" id="creationDate" />
+                            <div class="row">
+                                <g:if test="${!hasErrors(field: 'description','error')}">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2">
+                                        <g:textField id="description" class="form-control" name="description"  placeholder="Descripcion de tu PROMO"></g:textField>
+                                    </div>
+                                </g:if>
+                                <g:else>
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2 has-error">
+                                        <g:textField id="description" class="form-control "  name="description"  placeholder="Descripcion"></g:textField>
+                                        <label class="control-label list-group-item-danger img-rounded">Nombre entre 3-20 caracteres</label>
+                                    </div>
+                                </g:else>
+                            </div>
+                            <br>
+                            <h4 style="text-align: center">Fecha de creacion</h4>
+                            <div class="row">
+                                <g:if test="${!hasErrors(field: 'creationDateCampaign','error')}">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2" style="text-align: center">
+                                        <g:datePicker name="creationDateCampaign" id="creationDateCampaign" class="form-control" value="${new Date()}"  noSelection="['':'-Choose-']"/>
+                                    </div>
+                                </g:if>
+                                <g:else>
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2 has-error" style="text-align: center">
+                                        <g:datePicker name="creationDateCampaign" id="creationDateCampaign" class="form-control" value="${new Date()}" noSelection="['':'-Choose-']"/>
+                                        <label class="control-label list-group-item-danger img-rounded">message.properties</label>
+                                    </div>
+                                </g:else>
+                            </div>
+                            <br>
+                            <h4 style="text-align: center">Fecha de duracion</h4>
+                            <div class="row">
+                                <g:if test="${!hasErrors(field: 'dueDateCampaign','error')}">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2" style="text-align: center">
+                                        <g:datePicker name="dueDateCampaign" id="dueDateCampaign" class="form-control" value="${new Date()}" noSelection="['':'-Choose-']"/>
+                                    </div>
+                                </g:if>
+                                <g:else>
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2 has-error" style="text-align: center">
+                                        <g:datePicker name="dueDateCampaign" id="dueDateCampaign" class="form-control" value="${new Date()}"  noSelection="['':'-Choose-']"/>
+                                        <label class="control-label list-group-item-danger img-rounded">Fecha invalida</label>
+                                    </div>
+                                </g:else>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <g:if test="${!hasErrors(field: 'point','error')}">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2">
+                                        <g:field type="number"  id="point" class="form-control" name="point"  placeholder="Puntos de la PROMO"></g:field>
+                                    </div>
+                                </g:if>
+                                <g:else>
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2 has-error">
+                                        <g:field type="number" id="point" class="form-control "  name="point"  placeholder="Puntos de la PROMO"></g:field>
+                                        <label class="control-label list-group-item-danger img-rounded">Puntos mayor que 1</label>
+                                    </div>
+                                </g:else>
+                            </div>
+                            <br>
+                            <g:if test="${flash.message == "picture"}">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2  list-group-item img-rounded">
+                                        <legend>Imagen de la PROMO</legend>
+                                        <label for="picture">PROMO</label>
+                                        <input type="file" name="picture"/>
+                                        <div style="font-size:0.8em; margin: 1.0em;">
+                                            <p>Tu imagen de la promocio es opcional, pero como sus clientes se enteraran de tus promociones sin una buena imagen!.</p>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="fieldcontain  required">
-                                    <label for="dueDate" class="sr-only">
-                                        Duracion de la promo
-                                        <span class="required-indicator">*</span>
-                                    </label>
-                                    <input type="text" name="dueDate" class="form-control" placeholder="Duracion de la promo" required="" value="" id="dueDate" />
+                            </g:if>
+                            <g:else>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-offset-2  list-group-item img-rounded avatar-loader">
+                                        <legend>Imagen de la PROMO</legend>
+                                        <label for="picture">PROMO</label>
+                                        <input type="file" name="picture" id="picture" />
+                                        <div style="font-size:0.8em; margin: 1.0em;">
+                                            <p>Tu imagen de la promocion es opcional, pero como tus clientes se enteraran de tus promociones sin una buena imagen!</p>
+                                        </div>
+                                    </div>
                                 </div>
+                            </g:else>
+                            <br>
 
-                                <div class="fieldcontain  required">
-                                    <label for="point" class="sr-only">
-                                        Puntos
-                                        <span class="required-indicator">*</span>
-                                    </label>
-                                    <input type="number" name="point" class="form-control" placeholder="Puntos" min="1" required="" value="" id="point" />
 
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <input type="submit" name="create" class="btn btn-lg btn-primary btn-block" value="Registrarse" id="create" />
-                            </fieldset>
-                        </form>
+                            <g:submitButton name="summit" type="submit" value="Crear recompensa" class="btn btn-lg btn-success btn-block" tabindex="-1"></g:submitButton>
+                        </g:uploadForm>
                     </div>
                 </div>
             </div>
