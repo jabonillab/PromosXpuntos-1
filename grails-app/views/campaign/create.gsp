@@ -35,8 +35,8 @@
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script>
 		$(function() {
-			$( "#dueDateCampaign" ).datepicker({minDate: 2});
-			$( "#creationDateCampaign" ).datepicker({minDate: 0});
+			$( "#dueDate" ).datepicker({minDate: 2});
+			$( "#creationDate" ).datepicker({minDate: 0});
 		});
 	</script>
 
@@ -64,7 +64,6 @@
                     <div class="panel-body">
                         <form class="form-signin" action="/qweqq/campaign/save" method="post" >
                             <fieldset class="form">
-
 
                                 <div class="fieldcontain  required">
                                     <label for="campaignName" class="sr-only">
@@ -115,7 +114,7 @@
                                         Fecha de creacion
                                         <span class="required-indicator">*</span>
                                     </label>
-                                    <input type="text" name="creationDate" class="form-control" placeholder="Fecha de creacion" required="" value="date.struct" id="creationDate" />
+                                    <input type="text" name="creationDate" class="form-control" placeholder="Fecha de creacion" required="" value="" id="creationDate" />
                                 </div>
 
                                 <div class="fieldcontain  required">
@@ -123,7 +122,7 @@
                                         Duracion de la promo
                                         <span class="required-indicator">*</span>
                                     </label>
-                                    <input type="text" name="dueDate" class="form-control" placeholder="Duracion de la promo" required="" value="date.struct" id="dueDate" />
+                                    <input type="text" name="dueDate" class="form-control" placeholder="Duracion de la promo" required="" value="" id="dueDate" />
                                 </div>
 
                                 <div class="fieldcontain  required">

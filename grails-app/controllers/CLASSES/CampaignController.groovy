@@ -3,8 +3,6 @@ package CLASSES
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-import java.util.Date
-
 
 @Transactional(readOnly = true)
 class CampaignController {
@@ -27,7 +25,7 @@ class CampaignController {
 
 
     private static final okcontents = ['image/png', 'image/jpeg', 'image/gif']
-    def register() {
+    def registrar() {
 
         def campaign = Campaign.findByCampaignName(params.campaignName)
 
@@ -45,27 +43,20 @@ class CampaignController {
             }
             def parameters = [campaignName: params.campaignName
                               , description    : params.description
-                              , creationDateCampaign    : params.date(creationDateCampaign,'MM/dd/yyyy')
-                              , dueDateCampaign  :  params.date(dueDateCampaign,'MM/dd/yyyy')
+                              , creationDate    : params.creationDate
+                              , dueDate  : params.dueDate
                               , point   : params.point
                               , picture : pictureFile.bytes
                               , pictureType : pictureFile.contentType]
 
 
             def newCampaign = new Campaign(parameters)
+            flash.message = "Usuario creado"
 
-            if(!newCampaign.save(flush: true)){
-                render(view: 'logUp',model: [newCampaign:newCampaign])
-                return
-            }
-
-            campaign = Campaign.findByCampaignName(params.campaignName)
-            session["campaignSession"]=campaign.campaignName
-            redirect(controller: 'campaign', action: 'save',params: [campaignName:"${campaign.campaignName}"])
-            return
         }
+        redirect(controller: 'campaign', action: 'show')
+        return
     }
-
 
     @Transactional
     def save(Campaign campaignInstance) {
